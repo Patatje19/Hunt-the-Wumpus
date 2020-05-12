@@ -1,4 +1,11 @@
-#include "wumpus.hpp"
+#include "AI.hpp"
+#include "calculations.hpp"
+#include "config.hpp"
+#include "gameplay.hpp"
+#include "print.hpp"
+#include "printInstructions.hpp"
+#include "randomGenerate.hpp"
+#include "statistics.hpp"
 
 
 int left_chamber(int room, const std::vector<int> & rooms){
@@ -42,5 +49,25 @@ std::vector<int> room_generator(int roomsize){
 	}
 	
 	return rooms;
+	
+}
+
+
+char map_calc(const std::vector<int> & rooms, const std::vector<int> & bottemless_pits, int locatie_wumpus, 
+const std::vector<int> & room_bat, int room){
+	if(room == locatie_wumpus){
+		return 'W';
+	}
+	for(unsigned i=0; i < bottemless_pits.size(); i++){
+		if(bottemless_pits[i] == room){
+			return '_';
+		}
+	}
+	for(unsigned j=0; j < room_bat.size(); j++){
+		if(room_bat[j] == room){
+			return 'V';
+		}
+	}
+	return ' ';
 	
 }

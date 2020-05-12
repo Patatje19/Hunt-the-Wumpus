@@ -4,3 +4,4 @@
 4 speler locatie:17.
 5 aantal pijlen:15.
 6 vleermuis locatie:2,4,6,8.
+7 schatkist locatie:20.

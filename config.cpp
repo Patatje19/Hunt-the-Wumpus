@@ -1,4 +1,11 @@
-#include "wumpus.hpp"
+#include "AI.hpp"
+#include "calculations.hpp"
+#include "config.hpp"
+#include "gameplay.hpp"
+#include "print.hpp"
+#include "printInstructions.hpp"
+#include "randomGenerate.hpp"
+#include "statistics.hpp"
 
 
 std::string line_finder(int line_to_find){
@@ -96,7 +103,7 @@ int read_config_wumpus_location(){
 }
 
 
-int read_config_player_location(const std::vector<int> & bottemless_pits, int wumpus_location, std::vector<int> room_bat){
+int read_config_player_location(const std::vector<int> & bottemless_pits, int wumpus_location, const std::vector<int> & room_bat){
 	std::string line = line_finder(4);
 	std::string room_number = "";
 	
@@ -168,6 +175,30 @@ std::vector<int> read_config_room_bat(){
 	else{
 		return generate_room_bat(20);
 		
+	}
+	
+}
+
+
+int read_config_treasure_location(){
+	std::string line = line_finder(7);
+	std::string room_number = "";
+	
+	if(!line.empty()){
+		for(unsigned i = 0; i < line.size(); i++){
+			if(line[i] == ':'){
+				for(unsigned j = i+1; j < line.size(); j++){
+					room_number += line[j];
+				}
+			}
+		}
+		
+		int room = std::stoi (room_number);
+		
+		return room;
+	}
+	else{
+		return treasure_location(20);
 	}
 	
 }
