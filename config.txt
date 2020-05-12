@@ -1,0 +1,6 @@
+1 aantal kamers:30.
+2 bodemloseputten:5,4,3,2.
+3 wumpus locatie:6.
+4 speler locatie:17.
+5 aantal pijlen:15.
+6 vleermuis locatie:2,4,6,8.
